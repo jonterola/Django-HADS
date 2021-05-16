@@ -179,3 +179,15 @@ def users_detail(request):
                 'latest_user_list': latest_user_list,
               }
     return render(request, 'polls/users.html', context)
+
+def isCorrect(request):
+    question = get_object_or_404(Question, pk=request.POST['question'])
+    try:
+        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+    except (KeyError, Choice.DoesNotExist):
+        # Vuelve a mostrar el form.
+        return render(request, 'polls/ajax_result.html', {'error': "ERROR: No se ha seleccionado una opcion",})
+    else:
+        selected_choice.votes += 1
+        selected_choice.save()
+        return render(request, 'polls/ajax_result.html', {'correct':selected_choice.correct,})

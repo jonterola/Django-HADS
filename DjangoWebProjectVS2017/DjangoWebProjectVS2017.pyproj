@@ -75,6 +75,7 @@
     <Content Include="app\templates\polls\user_new.html" />
     <Content Include="app\templates\polls\question_new.html" />
     <Content Include="app\templates\polls\results.html" />
+    <Content Include="app\templates\polls\ajax_result.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
